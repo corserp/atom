@@ -1,37 +1,225 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/corserp/atom/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# emitter [![NPM version](https://img.shields.io/npm/v/@sellside/emitter.svg?style=flat)](https://www.npmjs.com/package/@sellside/emitter) [![NPM monthly downloads](https://img>
 
-### Markdown
+> Event emitter for node.js projects.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Please consider following this project's author, [Jon Schlinkert](https://github.com/jonschlinkert), and consider starring the project to show your :heart: and support.
 
-```markdown
-Syntax highlighted code block
+## Install
 
-# Header 1
-## Header 2
-### Header 3
+Install with [npm](https://www.npmjs.com/):
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```sh
+$ npm install --save @sellside/emitter
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Attribution
 
-### Jekyll Themes
+This is based on [component-emitter](https://github.com/component/emitter), with some changes and a couple of new methods. That project seems to no longer be maintained.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/corserp/atom/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Usage
 
-### Support or Contact
+Add to your node.js project with the following line of code:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```js
+var Emitter = require('@sellside/emitter');
+```
+
+## API
+
+### [Emitter](index.js#L18)
+
+Initialize a new `Emitter`.
+
+**Example**
+
+```js
+const Emitter = require('emitter');
+// as an `Emitter` instance
+const emitter = new Emitter;
+emitter.emit('something');
+// or inherit
+class MyEmitter extends Emitter {}
+```
+
+### [Emitter#mixin](index.js#L39)
+
+Mixin methods from Emitter.
+
+**Params**
+
+* `obj` **{Object}**
+* `returns` **{Object}**
+
+**Example**
+
+```js
+const Emitter = require('emitter');
+const obj = {};
+
+Emitter.mixin(obj);
+obj.on('status', console.log);
+obj.emit('status', 'I emit!');
+```
+
+### [.listeners](index.js#L58)
+
+Return the array of registered listeners for `event`.
+
+**Params**
+
+* `event` **{String}**
+* `returns` **{Array}**
+
+**Example**
+
+```js
+// all listeners for event "status"
+console.log(emitter.listeners('status'));
+// all listeners
+console.log(emitter.listeners());
+```
+
+### [.on](index.js#L78)
+
+Listen on the given `event` with `fn`.
+
+**Params**
+
+* `event` **{String}**
+* `fn` **{Function}**
+* `returns` **{Emitter}**
+
+**Example**
+
+```js
+emitter.on('foo', () => 'do stuff');
+```
+
+### [.once](index.js#L100)
+
+Adds an `event` listener that will be invoked a single time then automatically removed.
+
+**Params**
+
+* `event` **{String}**
+* `fn` **{Function}**
+* `returns` **{Emitter}**
+
+**Example**
+
+```js
+emitter.only('once', () => 'do stuff');
+```
+
+### [.only](index.js#L126)
+
+Ensures that listeners for `event` are only **_registered_** once and are disabled correctly when specified. This is different from `.once`, which only **emits** once.
+
+**Params**
+
+* `event` **{String}**
+* `options` **{Object}**
+* `fn` **{Function}**
+* `returns` **{Emitter}**
+
+**Example**
+
+```js
+emitter.only('foo', () => 'do stuff');
+```
+
+### [.off](index.js#L170)
+
+Remove the given listener for `event`, or remove all registered listeners if `event` is undefined.
+
+**Params**
+
+* `event` **{String}**
+* `fn` **{Function}**
+* `returns` **{Emitter}**
+
+**Example**
+
+```js
+emitter.off();
+emitter.off('foo');
+emitter.off('foo', fn);
+```
+
+### [.has](index.js#L227)
+
+Returns true if the emitter has registered listeners for `event`.
+
+**Params**
+
+* `event` **{String}**
+* `returns` **{Boolean}**
+
+**Example**
+
+```js
+emitter.on('foo', 'do stuff');
+console.log(emitter.has('foo')); // true
+console.log(emitter.has('bar')); // false
+```
+
+## About
+
+<details>
+<summary><strong>Contributing</strong></summary>
+
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
+
+Please read the [contributing guide](.github/contributing.md) for advice on opening issues, pull requests, and coding standards.
+
+</details>
+
+<details>
+<summary><strong>Running Tests</strong></summary>
+
+Running and reviewing unit tests is a great way to get familiarized with a library and its API. You can install dependencies and run tests wi                                   >
+
+```sh
+$ npm install && npm test
+```
+
+</details>
+<details>
+<summary><strong>Building docs</strong></summary>
+
+_(This project's readme.md is generated by [verb](https://github.com/verbose/verb-generate-readme), please don't edit the readme directly. An                                   >
+
+To generate the readme, run the following command:
+
+```sh
+$ npm install -g verbose/verb#dev verb-generate-readme && verb
+```
+
+</details>
+
+### Related projects
+
+You might also be interested in these projects:
+
+* [breakdance](https://www.npmjs.com/package/breakdance): Breakdance is a node.js library for converting HTML to markdown. Highly pluggable,                                    >
+* [micromatch](https://www.npmjs.com/package/micromatch): Glob matching for javascript/node.js. A drop-in replacement and faster alternative                                    >
+* [snapdragon](https://www.npmjs.com/package/snapdragon): Easy-to-use plugin system for creating powerful, fast and versatile parsers and com                                   >
+
+### Author
+
+**Jon Schlinkert**
+
+* [linkedin/in/jonschlinkert](https://linkedin.com/in/jonschlinkert)
+* [github/jonschlinkert](https://github.com/jonschlinkert)
+* [twitter/jonschlinkert](https://twitter.com/jonschlinkert)
+
+### License
+
+Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert).
+Released under the [MIT License](LICENSE).
+
+***
+
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on December 04, 2017._

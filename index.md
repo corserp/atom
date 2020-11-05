@@ -69,7 +69,7 @@ GNU nano 5.3                                                                    
     "toc": false,
     "layout": "default",
     "tasks": [
-      "readme"
+      "tmp"
     ],
     "plugins": [
       "gulp-format-md"

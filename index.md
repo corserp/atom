@@ -25,8 +25,8 @@ GNU nano 5.3                                                                    
   "_spec": "@sellside/emitter@^1.2.1",
   "_where": "/data/data/com.termux/files/home/downloads/node_modules/cache-base",
   "author": {
-    "name": "Jon Schlinkert",
-    "url": "https://github.com/jonschlinkert"
+    "name": "atom",
+    "url": "https://github.com/corserp"
   },
   "bugs": {
     "url": "https://github.com/sellside/emitter/issues"

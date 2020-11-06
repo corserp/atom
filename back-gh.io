@@ -1,1 +1,1 @@
-theme: jekyll-theme-back
+@theme: jekyll-theme-back

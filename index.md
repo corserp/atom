@@ -7,7 +7,7 @@ this is my website
 coded using mrk#yml
 
 
-<--BEGIN
+
 
 <html>
 <bgcolor="cyan">
@@ -23,6 +23,5 @@ coded using mrk#yml
 </body>
 </html>
 
---> RSA
 
 ==> git-ly.tmp

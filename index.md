@@ -10,6 +10,7 @@ coded using mrk#yml
 <--BEGIN
 
 <html>
+<bgcolor="cyan">
 <title> atom - :fire: @ back|
 </title>
 <head>

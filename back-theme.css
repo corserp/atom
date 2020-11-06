@@ -1,8 +1,19 @@
-.background {
-jekyll-tmp-back
+
+back {
+
 }
+
+bgcolor {
+purple
+}
+
+tmp.background {
+jekyll-theme.io
+}
+
+
 h2 {
-font family="verdana"
+font family="courier"
 font color="red"
 color="cyan"
 padding-right="20%"

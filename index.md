@@ -1,4 +1,4 @@
-GNU nano 5.3                                                                      package.json
+
 {
   "_from": "@sellside/emitter@^1.2.1",
   "_id": "@sellside/emitter@1.2.1",
